@@ -1,0 +1,54 @@
+$pFontSize: 24px;
+$bgColor: blue;
+$txtColor: black;
+$bgColorComp: Complement($bgColor);
+$primaryColor: red;
+
+@function pFontSizeDiv($pFontSize) {
+    $pFontSize: math.div($pFontSize, 2);
+
+    @return $pFontSize;
+}
+
+@function complementBgCol($bgColor) {
+
+    $bgColor: Complement($bgColor);
+
+    @return Complement($bgColor);
+
+}
+
+@function bgColorChange($txtColor, $bgColor) {
+ // N/A   
+}
+
+
+
+@mixin paraColors($txtColor, $bgColor) {
+    color:$txtColor;
+    background-color: $bgColor;
+}
+
+
+@mixin btnBorderCol($width, $borderColor) {
+    border:$width solid $borderColor;
+}
+
+body {
+    background-color: $bgColor;
+}
+
+button {
+    @include btnBorderCol(5px, red);
+}
+
+p {
+    font-size: $pFontSize;
+    color: $txtColor;
+
+    @include paraColors(white, red);
+}
+
+h1 {
+    color: $primaryColor;
+}
